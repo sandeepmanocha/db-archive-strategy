@@ -1,0 +1,273 @@
+{
+  "service": "Azure Blob Storage",
+  "description": "Massively scalable and secure object storage for block blob storage",
+  "pricing_url": "https://azure.microsoft.com/en-us/pricing/details/storage/blobs/",
+  "pricing_note": "Prices are estimates only. Actual pricing may vary depending on the type of agreement entered with Microsoft, date of purchase, and currency exchange rate.",
+  "storage_measurement": {
+    "unit": "GB (Gibibyte)",
+    "definition": "1 GB = 2^30 bytes, 1 TB = 2^40 bytes = 1,024 GB"
+  },
+  "storage_tiers": {
+    "Standard_GPv2": {
+      "description": "Recommended pricing offers for block blobs and append blobs with access to latest Azure Storage features",
+      "tiers": {
+        "Hot": {
+          "description": "Applicable for most workloads",
+          "use_case": "Frequently accessed data"
+        },
+        "Cool": {
+          "description": "Cool data with pricing optimized for lowest GB storage prices",
+          "use_case": "Infrequently accessed data",
+          "early_deletion_period_days": 30
+        },
+        "Cold": {
+          "description": "Cold data with pricing optimized for lowest GB storage prices",
+          "use_case": "Rarely accessed data",
+          "early_deletion_period_days": 90
+        },
+        "Archive": {
+          "description": "Archival data with pricing optimized for lowest GB storage prices",
+          "use_case": "Long-term backup and archival",
+          "early_deletion_period_days": 180,
+          "rehydration_time": "Up to 15 hours to Hot or Cool",
+          "valid_operations": [
+            "GetBlobProperties",
+            "GetBlobMetadata",
+            "ListBlobs",
+            "SetBlobTier",
+            "SetBlobTags",
+            "GetBlobTags",
+            "FindBlobsByTags",
+            "DeleteBlob",
+            "CopyBlob"
+          ]
+        }
+      }
+    },
+    "Premium": {
+      "description": "Premium blob storage with low and consistent latency, pricing optimized for high transaction rates",
+      "use_case": "High transaction rates, low latency requirements"
+    }
+  },
+  "pricing_structure": {
+    "data_storage_pay_as_you_go": {
+      "unit": "per GB per month",
+      "tiers": {
+        "Premium": {
+          "first_50_TB_month": "Contact Azure for pricing",
+          "next_450_TB_month": "Contact Azure for pricing",
+          "over_500_TB_month": "Contact Azure for pricing"
+        },
+        "Hot": {
+          "first_50_TB_month": "Contact Azure for pricing",
+          "next_450_TB_month": "Contact Azure for pricing",
+          "over_500_TB_month": "Contact Azure for pricing"
+        },
+        "Cool": {
+          "first_50_TB_month": "Contact Azure for pricing",
+          "next_450_TB_month": "Contact Azure for pricing",
+          "over_500_TB_month": "Contact Azure for pricing"
+        },
+        "Cold": {
+          "first_50_TB_month": "Contact Azure for pricing",
+          "next_450_TB_month": "Contact Azure for pricing",
+          "over_500_TB_month": "Contact Azure for pricing"
+        },
+        "Archive": {
+          "first_50_TB_month": "Contact Azure for pricing",
+          "next_450_TB_month": "Contact Azure for pricing",
+          "over_500_TB_month": "Contact Azure for pricing"
+        }
+      }
+    },
+    "reserved_capacity": {
+      "description": "Lower data storage cost by committing to one-year or three-years of Azure Storage",
+      "increments": [
+        "100 TB",
+        "1 PB"
+      ],
+      "commitment_durations": [
+        "1-year",
+        "3-year"
+      ],
+      "unit": "per month",
+      "tiers": {
+        "1_year_reserved": {
+          "Hot_100TB": "Contact Azure for pricing",
+          "Cool_100TB": "Contact Azure for pricing",
+          "Archive_100TB": "Contact Azure for pricing",
+          "Hot_1PB": "Contact Azure for pricing",
+          "Cool_1PB": "Contact Azure for pricing",
+          "Archive_1PB": "Contact Azure for pricing"
+        },
+        "3_year_reserved": {
+          "Hot_100TB": "Contact Azure for pricing",
+          "Cool_100TB": "Contact Azure for pricing",
+          "Archive_100TB": "Contact Azure for pricing",
+          "Hot_1PB": "Contact Azure for pricing",
+          "Cool_1PB": "Contact Azure for pricing",
+          "Archive_1PB": "Contact Azure for pricing"
+        }
+      }
+    },
+    "operations_and_data_transfer": {
+      "write_operations": {
+        "unit": "per 10,000 operations",
+        "Premium": "Contact Azure for pricing",
+        "Hot": "Contact Azure for pricing",
+        "Cool": "Contact Azure for pricing",
+        "Cold": "Contact Azure for pricing",
+        "Archive": "Contact Azure for pricing"
+      },
+      "list_and_create_container_operations": {
+        "unit": "per 10,000 operations",
+        "Premium": "Contact Azure for pricing",
+        "Hot": "Contact Azure for pricing",
+        "Cool": "Contact Azure for pricing",
+        "Cold": "Contact Azure for pricing",
+        "Archive": "Contact Azure for pricing"
+      },
+      "read_operations": {
+        "unit": "per 10,000 operations",
+        "Premium": "Contact Azure for pricing",
+        "Hot": "Contact Azure for pricing",
+        "Cool": "Contact Azure for pricing",
+        "Cold": "Contact Azure for pricing",
+        "Archive": "Free or N/A"
+      },
+      "delete_operations": {
+        "unit": "per 10,000 operations",
+        "all_tiers": "Free"
+      },
+      "data_write": {
+        "unit": "per GB",
+        "Premium": "Free",
+        "Hot": "Free",
+        "Cool": "Free or Contact for pricing",
+        "Cold": "Free",
+        "Archive": "Free"
+      },
+      "point_in_time_restore": {
+        "unit": "per MB",
+        "Hot": "Contact Azure for pricing",
+        "Cool": "Contact Azure for pricing",
+        "Archive": "Contact Azure for pricing"
+      },
+      "adls_gen2_note": "When using ADLS Gen2 API for transactions, read and write transactions occur for every 4 MB of data"
+    }
+  },
+  "additional_features": {
+    "SFTP": {
+      "name": "SSH File Transfer Protocol",
+      "description": "Securely connect to Blob Storage accounts via an SFTP endpoint for file access, transfer, and management",
+      "pricing": {
+        "unit": "per hour",
+        "charge": "Contact Azure for pricing (charged in hourly increments when enabled)"
+      }
+    },
+    "blob_index": {
+      "name": "Blob Index",
+      "description": "Intelligent data sub-resource with user-defined key/value tag attributes that are automatically indexed for querying",
+      "pricing": {
+        "unit": "per 10,000 tags",
+        "charge": "Contact Azure for pricing"
+      }
+    },
+    "change_feed": {
+      "name": "Change Feed",
+      "description": "Provides a log of changes in blob data in an ordered manner",
+      "pricing": {
+        "unit": "per 10,000 changes",
+        "charge": "Contact Azure for pricing"
+      },
+      "note": "Disabled by default, can be enabled on storage account"
+    },
+    "encryption_scopes": {
+      "name": "Encryption Scopes",
+      "description": "Manage encryption at container or individual blob level with customer-managed or Microsoft-managed keys",
+      "pricing": {
+        "unit": "per month",
+        "charge": "Contact Azure for pricing"
+      }
+    },
+    "blob_inventory": {
+      "name": "Blob Inventory",
+      "description": "Provides a list of containers, blobs, blob versions, and snapshots with associated properties in CSV or Apache Parquet format",
+      "pricing": {
+        "unit": "per million objects, per report generated",
+        "charge": "Contact Azure for pricing"
+      },
+      "note": "Price remains same across all access tiers"
+    },
+    "geo_priority_replication": {
+      "name": "Geo Priority Replication",
+      "description": "Accelerated data replication between primary and secondary regions with SLA ensuring Last Sync Time \u2264 15 minutes",
+      "sla": "99.0% of the billing month",
+      "pricing": {
+        "unit": "per GB",
+        "GRS": "Contact Azure for pricing",
+        "RA_GRS": "Contact Azure for pricing",
+        "GZRS": "Contact Azure for pricing",
+        "RA_GZRS": "Contact Azure for pricing"
+      }
+    },
+    "object_replication_priority": {
+      "name": "Object Replication Priority Replication",
+      "description": "Prioritized replication from source to destination storage account with SLA for 99.0% of operations within 15 minutes",
+      "pricing": {
+        "unit": "per GB",
+        "LRS": "Contact Azure for pricing",
+        "ZRS": "Contact Azure for pricing",
+        "GRS": "Contact Azure for pricing",
+        "RA_GRS": "Contact Azure for pricing",
+        "GZRS": "Contact Azure for pricing",
+        "RA_GZRS": "Contact Azure for pricing"
+      }
+    },
+    "geo_replication_data_transfer": {
+      "description": "Bandwidth used to replicate data to second Azure region for GRS, RA-GRS, GZRS, or RA-GZRS accounts",
+      "pricing": {
+        "unit": "per GB",
+        "charge": "Contact Azure for pricing"
+      },
+      "note": "GZRS and RA-GZRS not available for Premium Block Blobs"
+    }
+  },
+  "data_redundancy_options": [
+    "LRS (Locally Redundant Storage)",
+    "ZRS (Zone-Redundant Storage)",
+    "GRS (Geo-Redundant Storage)",
+    "RA-GRS (Read-Access Geo-Redundant Storage)",
+    "GZRS (Geo-Zone-Redundant Storage)",
+    "RA-GZRS (Read-Access Geo-Zone-Redundant Storage)"
+  ],
+  "cost_factors": [
+    "Volume of data stored per month",
+    "Quantity and types of operations performed",
+    "Data transfer costs",
+    "Data redundancy option selected"
+  ],
+  "early_deletion_penalties": {
+    "description": "Blobs are subject to early deletion penalty if deleted, overwritten, or moved to different tier before minimum required days",
+    "tiers": {
+      "Cool": {
+        "minimum_days": 30,
+        "penalty_basis": "Prorated based on Cool tier data storage price"
+      },
+      "Cold": {
+        "minimum_days": 90,
+        "penalty_basis": "Prorated based on Cold tier data storage price"
+      },
+      "Archive": {
+        "minimum_days": 180,
+        "penalty_basis": "Prorated based on Archive tier data storage price"
+      }
+    }
+  },
+  "important_notes": {
+    "pricing_calculator": "Sign in to Azure pricing calculator for pricing based on current program/offer",
+    "contact": "Contact Azure sales specialist for more information or price quote",
+    "government": "US government entities can purchase Azure Government services from licensing solution provider or pay-as-you-go subscription",
+    "international": "Prices in non-USD currencies are references; final price subject to exchange rates and applicable taxes"
+  }
+}

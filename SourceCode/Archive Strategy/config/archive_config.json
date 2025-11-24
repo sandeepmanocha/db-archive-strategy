@@ -1,0 +1,46 @@
+{
+  "tables": [
+    {
+      "source_catalog": "source_catalog",
+      "source_schema": "on_boarding",
+      "source_table": "wikipedia_articles2",
+      "date_column": "revisionTimestamp",
+      "archive_base_path": "s3://one-env-uc-external-location/sm-field-demo/wiki",
+      "rehydrated_catalog": "rehydrated_catalog",
+      "rehydrated_schema": "hydrated",
+      "rehydrated_table_name": "wiki",
+      "rehydrated_table_prefix": "ext",
+      "delete_after_archive": false,
+      "create_unified_view": true,
+      "is_active": true
+    },
+    {
+      "source_catalog": "main_catalog",
+      "source_schema": "sales",
+      "source_table": "transactions",
+      "date_column": "transaction_date",
+      "archive_base_path": "s3://your-bucket/archives/sales/transactions",
+      "rehydrated_catalog": "main_catalog",
+      "rehydrated_schema": "sales_archive",
+      "rehydrated_table_name": "transactions",
+      "rehydrated_table_prefix": "ext",
+      "delete_after_archive": false,
+      "create_unified_view": true,
+      "is_active": false
+    },
+    {
+      "source_catalog": "main_catalog",
+      "source_schema": "customer",
+      "source_table": "interactions",
+      "date_column": "interaction_timestamp",
+      "archive_base_path": "s3://your-bucket/archives/customer/interactions",
+      "rehydrated_catalog": "main_catalog",
+      "rehydrated_schema": "customer_archive",
+      "rehydrated_table_name": "interactions",
+      "rehydrated_table_prefix": "ext",
+      "delete_after_archive": true,
+      "create_unified_view": true,
+      "is_active": false
+    }
+  ]
+}
