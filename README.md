@@ -1,2 +1,2 @@
-# customer-examples
-Code for Customer Examples
+# examples
+Code for Examples
